@@ -39,14 +39,16 @@ The main purpose of this project is to practice and showcase my skills to potent
     npm install express mongoose jsonwebtoken bcryptjs dotenv
     ```
 
-3. Create a `.env` file in the root directory with the following content:
+3. Create a `.env` file in the root directory with the following content and:
     ```plaintext
     MONGODB_URI=your_mongodb_uri
     PORT=3000
     JWT_SECRET=your_JWT_SECRET
     ```
 
-4. Start the server:
+4. Replace your_mongodb_uri and your_JWT_SECRET with your actual data.
+
+5. Start the server:
     ```bash
     npm start
     ```
@@ -85,7 +87,7 @@ The main purpose of this project is to practice and showcase my skills to potent
 
 ## Deployment
 
-The API is deployed on Heroku. You can access it at: `https://your-heroku-app.herokuapp.com`
+The API is deployed on Heroku. You can access the live API here: [https://arcane-earth-56962-72540aa16b2d.herokuapp.com/](https://arcane-earth-56962-72540aa16b2d.herokuapp.com/)
 
 ## Contributing
 

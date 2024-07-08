@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const path = require('path');
 
 dotenv.config();
 
@@ -32,6 +33,9 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/api', authRouter);
 app.use('/api', notesRouter);
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(() => {
