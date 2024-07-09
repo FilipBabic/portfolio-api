@@ -4,11 +4,18 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 
 router.post('/notes', auth, async (req, res) => {
-  const note = new Note({
-    ...req.body,
-    user: req.user._id
-  });
   try {
+    const noteCount = await Note.countDocuments({ user: req.user._id });
+    console.log("NOTE COUNT", noteCount);
+    if (noteCount >= 5) {
+      return res.status(400).send({ error: 'You can only have a maximum of 5 notes.' });
+    }
+
+    const note = new Note({
+      ...req.body,
+      user: req.user._id
+    });
+
     await note.save();
     res.status(201).send(note);
   } catch (error) {
