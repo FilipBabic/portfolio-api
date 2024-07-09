@@ -8,10 +8,13 @@ A Node.js API deployed on Heroku, used on my portfolio website https://filipbabi
   
 - **Notes Management**
   - Create, read, update, and delete notes for authenticated users.
+
+- **Weather Management**
+  - Retrieves current weather data from OpenWeatherMap API.
+  - Provides endpoints for fetching weather data and updating user preferences.
   
 - **Future Enhancements**
   - Email validation for user accounts.
-  - Open Weather API implementation.
   - and more..
 
 ## Purpose
@@ -36,7 +39,7 @@ The main purpose of this project is to practice and showcase my skills to potent
 
 2. Install dependencies:
     ```bash
-    npm install express mongoose jsonwebtoken bcryptjs dotenv
+    npm install express mongoose jsonwebtoken bcryptjs dotenv axios
     ```
 
 3. Create a `.env` file in the root directory with the following content and:
@@ -44,9 +47,10 @@ The main purpose of this project is to practice and showcase my skills to potent
     MONGODB_URI=your_mongodb_uri
     PORT=3000
     JWT_SECRET=your_JWT_SECRET
+    WEATHER_API=your_openweathermap_api_key
     ```
 
-4. Replace your_mongodb_uri and your_JWT_SECRET with your actual data.
+4. Replace your_mongodb_uri, your_JWT_SECRET and your_openweathermap_api_key with your actual data.
 
 5. Start the server:
     ```bash
@@ -83,6 +87,22 @@ The main purpose of this project is to practice and showcase my skills to potent
 - **Delete a note:**
     ```bash
     DELETE /api/notes/:id
+    ```
+
+- **Get Weather from openWeather API:**
+
+    **URL:** `/weather`
+
+    **Method:** `GET`
+
+    **Query Parameters:**
+    - `lat` (required): Latitude of the location.
+    - `lon` (required): Longitude of the location.
+    - `auth-token` (required): Unique identifier for the user. The user must be logged in to use this feature
+
+    **Example Request:**
+    ```sh
+    curl "https://arcane-earth-56962-72540aa16b2d.herokuapp.com/api/weather?lat=37.7749&lon=-122.4194"
     ```
 
 ## Deployment

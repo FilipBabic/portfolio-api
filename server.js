@@ -8,6 +8,7 @@ dotenv.config();
 
 const authRouter = require('./routes/auth');
 const notesRouter = require('./routes/notes');
+const weatherRouter = require('./routes/weather');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -33,6 +34,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/api', authRouter);
 app.use('/api', notesRouter);
+app.use('/api', weatherRouter);
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
